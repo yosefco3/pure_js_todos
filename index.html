@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pirple Todo</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ToDo's</a>
+            <div>
+                <a class="nav-link navbar-nav active" onclick="updateSettings()">Account Settings</a>
+                <a class="nav-link navbar-nav" onclick="logout()">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <!-- /navbar -->
+    <div class="container">
+        <div class="row">
+            <!-- home -->
+            <div class="home">
+                <div class="title">
+                    <h1>To Do Lists App</h1>
+                    <h3>This app is pure JS app to arrange your Todo's!</h3>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="signUp()">Sign Up</button>
+                    <button class="btn btn-primary" onclick="login()">Login</button>
+                </div>
+                <br>
+                <h6>This app is for Educational purpose.</h6>
+                <ul>
+                    <li>All the information kept in local storage without encription.</li>
+                    <li>Don't put there real passwords etc.</li>
+                    <li>You could refresh the page to move back.</li>
+                </ul>
+            </div>
+            <!--/home  -->
+
+            <!-- sign-up-form-div -->
+            <div class="sign-up-form-div col-6">
+                <h1>Sign Up</h1>
+                <div class="error" style="color:red;">Email already exist!</div>
+                <form class="sign-up-form">
+                    <!-- first name, last name, email, and password  -->
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" aria-describedby="firstName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" aria-describedby="lastName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck" required>
+                        <label class="form-check-label" for="exampleCheck1">I agree to the Terms of Use</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Sign Up</button>
+                </form>
+               
+            </div>
+            <!-- /sign up form div -->
+            <!--login-form-div  -->
+            <div class="login-form-div col-6">
+                <h1>Login</h1>
+                <form class="login-form">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Log In</button>
+                </form>
+                <div id="login-error">There is a login error!</div>
+            </div>
+            <!-- /login form div -->
+            <!-- dashboard -->
+            <div class="dashboard">
+                <h3 class="no-lists-message">There Are Not Todo's Lists Yet!</h3>
+
+                <div class="todo-list-name mt-4">
+                    <form class="form-inline create-list-form">
+                        <div class="row">
+                            <div class="form-group mx-sm-3 mb-2 col-5">
+                                <input type="text" class="form-control" id="createTodoList" placeholder="Create List" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning mb-2 col-3">Create Todo List</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="lists-names"></div>
+                <div class="update-list-name"></div>
+            </div>
+            <!-- /dashboard -->
+            <!-- Todos -->
+            <div class="todos-container">
+                <div class="todolist-name"></div>
+                <h3 class="no-todos-message">There are not todo's in this list yet!</h3>
+                <div class="todos mt-4">
+                    <form class="form-inline create-todo-form">
+                        <div class="row">
+                            <div class="form-group mx-sm-3 mb-2 col-5">
+                                <input type="text" class="form-control" id="createTodo" placeholder="Create Todo" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning mb-2 col-3">Create Todo</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="todo-list"></div>
+                <button class="btn btn-danger back-to-lists">Back To Lists</button>
+            </div>
+            <!-- /Todos -->
+            <!-- account settings -->
+            <div class="account-settings col-6">
+                <h1>Account Settings</h1>
+                <form class="account-form">
+                    <!-- first name, last name, email, and password  -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email address (can't be updated)</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updatefirstName" class="form-label">Update First Name</label>
+                        <input type="text" class="form-control" id="updatefirstName" aria-describedby="firstName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updatelastName" class="form-label">Update Last Name</label>
+                        <input type="text" class="form-control" id="updatelastName" aria-describedby="lastName" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="updatePassword" class="form-label">Update Password</label>
+                        <input type="password" class="form-control" id="updatePassword" required>
+                    </div>
+                    <button type="reset" class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+                    <button type="submit" class="btn btn-success">Update Account</button>
+                </form>
+            </div>
+            <!-- /account -->
+        </div>
+    </div>
+    <!-- bootstrap CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>

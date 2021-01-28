@@ -1,0 +1,52 @@
+.sign-up-form-div {
+    display: none;
+}
+
+.login-form-div {
+    display: none;
+}
+
+#login-error {
+    color: red;
+    display: none;
+}
+
+.dashboard {
+    display: none;
+}
+
+.no-lists-message {
+    display: none;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-name {
+    font-size: 2em;
+}
+
+.update-list-name {
+    display: none;
+}
+
+.account-settings {
+    display: none;
+}
+
+.todos-container {
+    display: none;
+}
+
+.nav-link,
+.nav-link:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.error {
+    display: none;
+}
